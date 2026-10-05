@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Yehya Elsayed, Flutter developer. Android and iOS apps published on Google Play and the App Store.">
+<meta property="og:title" content="Yehya Elsayed | Flutter Developer">
+<meta property="og:description" content="Android and iOS apps published on Google Play and the App Store.">
+<meta property="og:type" content="website">
+<title>Yehya Elsayed Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+html{-webkit-text-size-adjust:100%}img{max-width:100%}[hidden]{display:none!important}
+
+/* Layout: sticky nav, a hero with drifting color fields and a phone whose screen scrolls through the live apps, a tech ticker, then a shelf of store-style listings and a résumé strip. */
+:root{
+  --bg:#fbfaff; --surface:#ffffff; --ink:#140f2e; --muted:#5d5878; --line:#e7e3f5; --accent:#5b2bff; --accent2:#ff4d8d; --accent3:#ffb300; --accent4:#00c2d1; --accent-ink:#ffffff; --live:#0a9f63; --on-cat:#ffffff; --phone:#140f2e; --glass:rgba(251,250,255,.78);
+  --cat-mob:#2a5bff; --cat-mob2:#00c2d1; --cat-mkt:#e8501a; --cat-mkt2:#ffb300; --cat-book:#0891a1; --cat-book2:#2ad18b; --cat-com:#e0246f; --cat-com2:#ff7a59; --cat-care:#12924a; --cat-care2:#9bd21f; --cat-media:#6d3bff; --cat-media2:#ff4d8d;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif; --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0d0a1f; --surface:#17132e; --ink:#f4f1ff; --muted:#a8a2c6; --line:#2b2550; --accent:#9d7bff; --accent2:#ff6fa3; --accent3:#ffc94d; --accent4:#3fe0ec; --accent-ink:#0d0a1f; --live:#4fe0a0; --on-cat:#ffffff; --phone:#000000; --glass:rgba(13,10,31,.72);
+  --cat-mob:#6f93ff; --cat-mob2:#3fe0ec; --cat-mkt:#ff8a4d; --cat-mkt2:#ffc94d; --cat-book:#3fd0e0; --cat-book2:#5fe6a8; --cat-com:#ff6fa3; --cat-com2:#ff9a7a; --cat-care:#5fd98a; --cat-care2:#c2ec5a; --cat-media:#a78bff; --cat-media2:#ff6fa3; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0d0a1f; --surface:#17132e; --ink:#f4f1ff; --muted:#a8a2c6; --line:#2b2550; --accent:#9d7bff; --accent2:#ff6fa3; --accent3:#ffc94d; --accent4:#3fe0ec; --accent-ink:#0d0a1f; --live:#4fe0a0; --on-cat:#ffffff; --phone:#000000; --glass:rgba(13,10,31,.72);
+  --cat-mob:#6f93ff; --cat-mob2:#3fe0ec; --cat-mkt:#ff8a4d; --cat-mkt2:#ffc94d; --cat-book:#3fd0e0; --cat-book2:#5fe6a8; --cat-com:#ff6fa3; --cat-com2:#ff9a7a; --cat-care:#5fd98a; --cat-care2:#c2ec5a; --cat-media:#a78bff; --cat-media2:#ff6fa3; color-scheme:dark }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;margin:0;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+.gutter{max-width:1160px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.cat-mob{--cat:var(--cat-mob);--cat2:var(--cat-mob2)} .cat-mkt{--cat:var(--cat-mkt);--cat2:var(--cat-mkt2)} .cat-book{--cat:var(--cat-book);--cat2:var(--cat-book2)} .cat-com{--cat:var(--cat-com);--cat2:var(--cat-com2)} .cat-care{--cat:var(--cat-care);--cat2:var(--cat-care2)} .cat-media{--cat:var(--cat-media);--cat2:var(--cat-media2)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav .gutter{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{font-family:var(--display);font-weight:800;font-size:1.1rem;text-decoration:none;letter-spacing:-.02em}
+.brand i{font-style:normal;color:var(--accent2)}
+.nav nav{display:flex;gap:4px}
+.nav nav a{text-decoration:none;font-size:.92rem;font-weight:500;padding:6px 12px;border-radius:999px;color:var(--muted)}
+.nav nav a:hover{color:var(--ink);background:color-mix(in oklab,var(--accent) 12%,transparent)}
+.bar{position:absolute;left:0;bottom:-1px;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3))}
+
+/* hero */
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.blob{position:absolute;z-index:-1;border-radius:50%;filter:blur(70px);opacity:.5}
+.b1{width:460px;height:460px;background:var(--accent);top:-140px;left:-120px}
+.b2{width:380px;height:380px;background:var(--accent2);top:40px;right:-80px}
+.b3{width:320px;height:320px;background:var(--accent3);bottom:-140px;left:32%}
+.b4{width:260px;height:260px;background:var(--accent4);bottom:-60px;right:22%}
+.hero .gutter{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(40px,7vw,88px)}
+.htext{display:flex;flex-direction:column;gap:22px;min-width:0}
+.live{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-family:var(--mono);font-size:.8rem;color:var(--live);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--live);display:block;box-shadow:0 0 0 0 var(--live)}
+h1{font-size:clamp(2.7rem,7.4vw,5.6rem);line-height:.94;font-weight:800;letter-spacing:-.04em}
+h1 .grad{display:block;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3),var(--accent4),var(--accent));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.lede{font-size:clamp(1.05rem,2vw,1.25rem);max-width:56ch;color:var(--muted);margin:0}
+.lede b{color:var(--ink);font-weight:600}
+.facts{display:flex;flex-wrap:wrap;gap:12px}
+.fact{display:flex;flex-direction:column;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 18px;min-width:120px}
+.fact b{font-family:var(--display);font-size:2rem;font-weight:800;line-height:1.05;font-variant-numeric:tabular-nums;background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.fact span{font-size:.86rem;color:var(--muted)}
+.contact{display:flex;flex-wrap:wrap;gap:10px}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:9px 16px;font-size:.92rem;text-decoration:none;color:var(--ink);font-family:inherit;cursor:pointer;min-width:0}
+.pill.primary{background:linear-gradient(120deg,var(--accent),var(--accent2));color:var(--on-cat);border-color:transparent;font-weight:600;box-shadow:0 10px 24px -10px var(--accent)}
+.pill code{font-family:var(--mono);font-size:.86rem;overflow-wrap:anywhere;user-select:all}
+.pill small{font-family:var(--mono);font-size:.72rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+a.pill:hover,button.pill:hover{border-color:var(--accent)}
+
+/* phone */
+.phonewrap{display:grid;place-items:center;min-width:0}
+.phone{width:min(100%,270px);aspect-ratio:9/18.5;background:var(--phone);border-radius:42px;padding:10px;box-shadow:0 40px 70px -30px var(--accent),0 0 0 1px var(--line);position:relative}
+.phone:before{content:"";position:absolute;top:18px;left:50%;width:74px;height:20px;margin-left:-37px;background:var(--phone);border-radius:999px;z-index:2}
+.screen{height:100%;border-radius:33px;background:var(--surface);overflow:hidden;position:relative;display:flex;flex-direction:column}
+.shead{padding:46px 16px 10px;font-family:var(--display);font-weight:800;font-size:1.15rem;border-bottom:1px solid var(--line);flex:none}
+.shead small{display:block;font-family:var(--mono);font-weight:400;font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.feed{flex:1;overflow:hidden;position:relative}
+.track{display:flex;flex-direction:column}
+.prow{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line)}
+.picon{flex:none;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:.72rem;color:var(--on-cat);background:linear-gradient(135deg,var(--cat),var(--cat2))}
+.ptxt{display:flex;flex-direction:column;min-width:0;flex:1}
+.ptxt b{font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ptxt small{font-size:.66rem;color:var(--muted)}
+.pget{font-family:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.05em;color:var(--live);border:1px solid var(--live);border-radius:999px;padding:2px 7px}
+
+/* ticker */
+.ticker{border-block:1px solid var(--line);background:var(--surface);overflow:hidden;padding-block:14px}
+.ticker div{display:flex;gap:0;width:max-content}
+.ticker span{font-family:var(--display);font-weight:700;font-size:1.15rem;white-space:nowrap;padding-inline:22px;position:relative}
+.ticker span:after{content:"";position:absolute;right:-5px;top:50%;width:9px;height:9px;margin-top:-4px;border-radius:3px;background:var(--accent2);transform:rotate(45deg)}
+.ticker span:nth-child(3n+1):after{background:var(--accent)} .ticker span:nth-child(3n+2):after{background:var(--accent3)}
+
+/* sections */
+main{display:flex;flex-direction:column;gap:clamp(48px,7vw,88px);padding-block:clamp(40px,6vw,72px)}
+.sec{display:flex;flex-direction:column;gap:24px}
+.sechead{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px 24px}
+h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.03em}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:.88rem;font-weight:500;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:7px 14px;cursor:pointer}
+.chip b{font-family:var(--mono);font-weight:500;font-size:.76rem;margin-left:4px}
+.chip:hover{border-color:var(--accent);color:var(--ink)}
+.chip[aria-pressed="true"]{background:linear-gradient(120deg,var(--accent),var(--accent2));color:var(--on-cat);border-color:transparent}
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:18px}
+.app{--mx:50%;--my:0%;position:relative;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0;overflow:hidden}
+.app:before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--cat),var(--cat2))}
+.app:after{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx) var(--my),color-mix(in oklab,var(--cat) 16%,transparent),transparent 60%);opacity:0;pointer-events:none}
+.app>*{position:relative;z-index:1}
+.apphead{display:flex;gap:14px;align-items:center;min-width:0}
+.icon{flex:none;width:62px;height:62px;border-radius:17px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-.02em;color:var(--on-cat);background:linear-gradient(135deg,var(--cat),var(--cat2));box-shadow:0 12px 22px -12px var(--cat)}
+.appname{display:flex;flex-direction:column;gap:2px;min-width:0}
+h3{font-size:1.25rem;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+.sub{font-size:.88rem;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:4px 10px;font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase}
+.catlabel{color:var(--cat);font-weight:500} .when{color:var(--muted)}
+.desc{margin:0;font-size:.95rem}
+.feats{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.feats li{font-size:.8rem;font-weight:500;padding:4px 10px;border-radius:999px;background:color-mix(in oklab,var(--cat) 12%,var(--surface));color:var(--ink)}
+img.icon{object-fit:cover;padding:0}
+.shots{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;margin-inline:-4px;padding-inline:4px;scrollbar-width:thin}
+.shot{flex:none;width:118px;aspect-ratio:9/19.5;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--bg);padding:0;cursor:zoom-in;scroll-snap-align:start}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot.banner{width:100%;aspect-ratio:auto;scroll-snap-align:none}
+.shot.banner img{height:auto}
+.lb{position:fixed;inset:0;z-index:50;background:color-mix(in oklab,var(--phone) 88%,transparent);display:grid;place-items:center;padding:24px;cursor:zoom-out}
+.lb img{max-height:100%;max-width:100%;border-radius:20px}
+.pkg{font-family:var(--mono);font-size:.76rem;color:var(--muted);overflow-wrap:anywhere;margin-top:auto;padding-top:12px;border-top:1px dashed var(--line)}
+.stores{display:flex;flex-direction:column;gap:8px}
+.storerow{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.who{font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);flex-basis:100%}
+.store{display:inline-flex;gap:6px;align-items:center;font-size:.84rem;font-weight:600;text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:6px 11px;color:var(--ink);background:var(--surface)}
+.store span{color:var(--cat)}
+.store:hover{background:linear-gradient(120deg,var(--cat),var(--cat2));color:var(--on-cat);border-color:transparent}
+.store:hover span{color:var(--on-cat)}
+
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:32px 48px}
+.block{display:flex;flex-direction:column;gap:16px;min-width:0}
+.job{display:flex;flex-direction:column;gap:6px;padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:var(--surface);border-left:5px solid var(--accent)}
+.job+.job{border-left-color:var(--accent2)}
+.job h3{font-size:1.15rem}
+.job .when{font-family:var(--mono);font-size:.78rem}
+.job ul{margin:4px 0 0;padding-left:18px;color:var(--muted);font-size:.94rem;display:flex;flex-direction:column;gap:4px}
+dl{margin:0;display:flex;flex-direction:column}
+dl div{display:grid;grid-template-columns:minmax(0,130px) minmax(0,1fr);gap:12px;padding-block:11px;border-top:1px solid var(--line);font-size:.94rem}
+dt{font-family:var(--mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);padding-top:3px}
+dd{margin:0}
+.cta{position:relative;isolation:isolate;overflow:hidden;border-radius:28px;padding:clamp(28px,5vw,56px);background:linear-gradient(120deg,var(--accent),var(--accent2),var(--accent3));background-size:200% 200%;color:var(--on-cat);display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+.cta h2{color:var(--on-cat)}
+.cta p{margin:0;max-width:52ch;font-size:1.05rem}
+.cta .pill{border-color:transparent}
+footer{border-top:1px solid var(--line);padding-block:20px;color:var(--muted);font-size:.9rem}
+footer .gutter{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+
+@media (max-width:820px){.hero .gutter{grid-template-columns:minmax(0,1fr)}.phone{width:230px}.nav nav a{padding:6px 8px}}
+
+/* motion */
+@keyframes drift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,30px) scale(1.15)}100%{transform:translate(-30px,50px) scale(.95)}}
+@keyframes shine{to{background-position:300% 0}}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in oklab,var(--live) 70%,transparent)}100%{box-shadow:0 0 0 10px transparent}}
+@keyframes feed{to{transform:translateY(-50%)}}
+@keyframes slide{to{transform:translateX(-50%)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(-1deg)}}
+@keyframes pan{0%{background-position:0 50%}100%{background-position:100% 50%}}
+@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:no-preference){
+  .blob{animation:drift 14s ease-in-out infinite alternate}
+  .b2{animation-duration:18s;animation-direction:alternate-reverse}.b3{animation-duration:20s}.b4{animation-duration:16s;animation-direction:alternate-reverse}
+  h1 .grad{animation:shine 9s linear infinite}
+  .htext>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  .htext>*:nth-child(2){animation-delay:.08s}.htext>*:nth-child(3){animation-delay:.16s}.htext>*:nth-child(4){animation-delay:.24s}.htext>*:nth-child(5){animation-delay:.32s}
+  .live i{animation:pulse 1.6s ease-out infinite}
+  .phone{animation:float 6s ease-in-out infinite}
+  .track{animation:feed 26s linear infinite}
+  .ticker div{animation:slide 32s linear infinite}
+  .ticker:hover div{animation-play-state:paused}
+  .cta{animation:pan 8s ease-in-out infinite alternate}
+  .in{animation:rise .65s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0s)}
+  .popin{animation:pop .35s ease both}
+  .app{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,border-color .25s}
+  .app:after{transition:opacity .25s}
+  .app:hover{transform:translateY(-6px);border-color:color-mix(in oklab,var(--cat) 50%,var(--line));box-shadow:0 26px 44px -26px var(--cat)}
+  .app:hover:after{opacity:1}
+  .icon{transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+  .app:hover .icon{transform:rotate(-8deg) scale(1.08)}
+  .shot{transition:transform .2s}.shot:hover{transform:translateY(-4px) scale(1.03)}
+  .pill,.store,.chip{transition:transform .15s,border-color .15s,background .2s,color .2s}
+  .pill:hover,.store:hover{transform:translateY(-2px)}
+}
+</style>
+</head>
+<body>
+
+
+<div class="nav"><div class="gutter">
+  <a class="brand" href="#top">Yehya<i>.</i></a>
+  <nav aria-label="Sections"><a href="#apps">Apps</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+</div><div class="bar" id="bar"></div></div>
+
+<header class="hero" id="top">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+  <div class="gutter">
+    <div class="htext">
+      <span class="live"><i></i>20+ apps live on Google Play and the App Store</span>
+      <h1>Yehya Elsayed<span class="grad">Flutter Developer</span></h1>
+      <p class="lede">I build and ship Android and iOS apps with Flutter. <b>5 years</b> of production work across mobility, marketplaces, booking, commerce, health and education, with real-time tracking, maps, chat and online payments.</p>
+      <div class="facts">
+        <div class="fact"><b data-count="5">5</b><span>years of experience</span></div>
+        <div class="fact"><b data-count="20" data-suffix="+">20+</b><span>apps live on the stores</span></div>
+        <div class="fact"><b data-count="2">2</b><span>platforms, Android and iOS</span></div>
+      </div>
+      <div class="contact">
+        <a class="pill primary" href="#apps">See the apps ↓</a>
+        <a class="pill" href="https://www.linkedin.com/in/yehya-mohamed-1269b52a2/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="pill" href="https://github.com/Yehyaelzaeem" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="phonewrap" aria-hidden="true"><div class="phone"><div class="screen">
+      <div class="shead">My apps<small>Live on the stores</small></div>
+      <div class="feed"><div class="track"><div class="prow cat-mkt"><span class="picon">Sh</span><span class="ptxt"><b>Shoglana</b><small>Marketplaces</small></span><span class="pget">Live</span></div><div class="prow cat-media"><span class="picon">WUF</span><span class="ptxt"><b>SAUDI WUF</b><small>Media & Tools</small></span><span class="pget">Live</span></div><div class="prow cat-book"><span class="picon">AB</span><span class="ptxt"><b>Air Balloon Booking</b><small>Booking</small></span><span class="pget">Live</span></div><div class="prow cat-book"><span class="picon">ABP</span><span class="ptxt"><b>Air Balloon Provider</b><small>Booking</small></span><span class="pget">Live</span></div><div class="prow cat-care"><span class="picon">W</span><span class="ptxt"><b>Wezary</b><small>Health & Learning</small></span><span class="pget">Live</span></div><div class="prow cat-media"><span class="picon">T</span><span class="ptxt"><b>Taknikat</b><small>Media & Tools</small></span><span class="pget">Live</span></div><div class="prow cat-book"><span class="picon">TT</span><span class="ptxt"><b>Tourist Tour</b><small>Booking</small></span><span class="pget">Live</span></div><div class="prow cat-mob"><span class="picon">ITO</span><span class="ptxt"><b>ITO</b><small>Mobility</small></span><span class="pget">Live</span></div><div class="prow cat-mob"><span class="picon">ITC</span><span class="ptxt"><b>ITO Captain</b><small>Mobility</small></span><span class="pget">Live</span></div><div class="prow cat-care"><span class="picon">FOF</span><span class="ptxt"><b>Fit Over Fat</b><small>Health & Learning</small></span><span class="pget">Live</span></div><div class="prow cat-care"><span class="picon">SH</span><span class="ptxt"><b>Smart Hub for Parents</b><small>Health & Learning</small></span><span class="pget">Live</span></div><div class="prow cat-care"><span class="picon">SHT</span><span class="ptxt"><b>Smart Hub for Teachers</b><small>Health & Learning</small></span><span class="pget">Live</span></div><div class="prow cat-mkt"><span class="picon">S</span><span class="ptxt"><b>Shart</b><small>Marketplaces</small></span><span class="pget">Live</span></div><div class="prow cat-mob"><span class="picon">Q</span><span class="ptxt"><b>Q Trip</b><small>Mobility</small></span><span class="pget">Live</span></div><div class="prow cat-mob"><span class="picon">QD</span><span class="ptxt"><b>Q Trip Driver</b><small>Mobility</small></span><span class="pget">Live</span></div><div class="prow cat-book"><span class="picon">AK</span><span class="ptxt"><b>Alkaff Haj</b><small>Booking</small></span><span class="pget">Live</span></div><div class="prow cat-com"><span class="picon">AK</span><span class="ptxt"><b>Al-Khalaf for Slaughterhouses</b><small>Commerce</small></span><span class="pget">Live</span></div><div class="prow cat-media"><span class="picon">AB</span><span class="ptxt"><b>Al-Bilbisi for Metal Industries</b><small>Media & Tools</small></span><span class="pget">Live</span></div><div class="prow cat-mkt"><span class="picon">D</span><span class="ptxt"><b>Done</b><small>Marketplaces</small></span><span class="pget">Live</span></div><div class="prow cat-com"><span class="picon">OG</span><span class="ptxt"><b>One Gapati</b><small>Commerce</small></span><span class="pget">Live</span></div><div class="prow cat-mkt"><span class="picon">CU</span><span class="ptxt"><b>Connect User</b><small>Marketplaces</small></span><span class="pget">Live</span></div><div class="prow cat-mob"><span class="picon">CD</span><span class="ptxt"><b>Connect Driver</b><small>Mobility</small></span><span class="pget">Live</span></div><div class="prow cat-com"><span class="picon">CS</span><span class="ptxt"><b>Connect Stores</b><small>Commerce</small></span><span class="pget">Live</span></div><div class="prow cat-mkt"><span class="picon">CP</span><span class="ptxt"><b>Connect Provider</b><small>Marketplaces</small></span><span class="pget">Live</span></div><div class="prow cat-mkt"><span class="picon">Sh</span><span class="ptxt"><b>Shoglana</b><small>Marketplaces</small></span><span class="pget">Live</span></div><div class="prow cat-media"><span class="picon">WUF</span><span class="ptxt"><b>SAUDI WUF</b><small>Media & Tools</small></span><span class="pget">Live</span></div><div class="prow cat-book"><span class="picon">AB</span><span class="ptxt"><b>Air Balloon Booking</b><small>Booking</small></span><span class="pget">Live</span></div><div class="prow cat-book"><span class="picon">ABP</span><span class="ptxt"><b>Air Balloon Provider</b><small>Booking</small></span><span class="pget">Live</span></div><div class="prow cat-care"><span class="picon">W</span><span class="ptxt"><b>Wezary</b><small>Health & Learning</small></span><span class="pget">Live</span></div><div class="prow cat-media"><span class="picon">T</span><span class="ptxt"><b>Taknikat</b><small>Media & Tools</small></span><span class="pget">Live</span></div><div class="prow cat-book"><span class="picon">TT</span><span class="ptxt"><b>Tourist Tour</b><small>Booking</small></span><span class="pget">Live</span></div><div class="prow cat-mob"><span class="picon">ITO</span><span class="ptxt"><b>ITO</b><small>Mobility</small></span><span class="pget">Live</span></div><div class="prow cat-mob"><span class="picon">ITC</span><span class="ptxt"><b>ITO Captain</b><small>Mobility</small></span><span class="pget">Live</span></div><div class="prow cat-care"><span class="picon">FOF</span><span class="ptxt"><b>Fit Over Fat</b><small>Health & Learning</small></span><span class="pget">Live</span></div><div class="prow cat-care"><span class="picon">SH</span><span class="ptxt"><b>Smart Hub for Parents</b><small>Health & Learning</small></span><span class="pget">Live</span></div><div class="prow cat-care"><span class="picon">SHT</span><span class="ptxt"><b>Smart Hub for Teachers</b><small>Health & Learning</small></span><span class="pget">Live</span></div><div class="prow cat-mkt"><span class="picon">S</span><span class="ptxt"><b>Shart</b><small>Marketplaces</small></span><span class="pget">Live</span></div><div class="prow cat-mob"><span class="picon">Q</span><span class="ptxt"><b>Q Trip</b><small>Mobility</small></span><span class="pget">Live</span></div><div class="prow cat-mob"><span class="picon">QD</span><span class="ptxt"><b>Q Trip Driver</b><small>Mobility</small></span><span class="pget">Live</span></div><div class="prow cat-book"><span class="picon">AK</span><span class="ptxt"><b>Alkaff Haj</b><small>Booking</small></span><span class="pget">Live</span></div><div class="prow cat-com"><span class="picon">AK</span><span class="ptxt"><b>Al-Khalaf for Slaughterhouses</b><small>Commerce</small></span><span class="pget">Live</span></div><div class="prow cat-media"><span class="picon">AB</span><span class="ptxt"><b>Al-Bilbisi for Metal Industries</b><small>Media & Tools</small></span><span class="pget">Live</span></div><div class="prow cat-mkt"><span class="picon">D</span><span class="ptxt"><b>Done</b><small>Marketplaces</small></span><span class="pget">Live</span></div><div class="prow cat-com"><span class="picon">OG</span><span class="ptxt"><b>One Gapati</b><small>Commerce</small></span><span class="pget">Live</span></div><div class="prow cat-mkt"><span class="picon">CU</span><span class="ptxt"><b>Connect User</b><small>Marketplaces</small></span><span class="pget">Live</span></div><div class="prow cat-mob"><span class="picon">CD</span><span class="ptxt"><b>Connect Driver</b><small>Mobility</small></span><span class="pget">Live</span></div><div class="prow cat-com"><span class="picon">CS</span><span class="ptxt"><b>Connect Stores</b><small>Commerce</small></span><span class="pget">Live</span></div><div class="prow cat-mkt"><span class="picon">CP</span><span class="ptxt"><b>Connect Provider</b><small>Marketplaces</small></span><span class="pget">Live</span></div></div></div>
+    </div></div></div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true"><div><span>Flutter</span><span>Dart</span><span>BLoC</span><span>Clean Architecture</span><span>Firebase</span><span>Google Maps</span><span>REST APIs</span><span>Payment Gateways</span><span>Push Notifications</span><span>Real-time Tracking</span><span>Laravel</span><span>App Store</span><span>Google Play</span><span>Flutter</span><span>Dart</span><span>BLoC</span><span>Clean Architecture</span><span>Firebase</span><span>Google Maps</span><span>REST APIs</span><span>Payment Gateways</span><span>Push Notifications</span><span>Real-time Tracking</span><span>Laravel</span><span>App Store</span><span>Google Play</span></div></div>
+
+<main class="gutter">
+<section class="sec" id="apps">
+  <div class="sechead">
+    <div><span class="eyebrow">Published work</span><h2>Apps on the stores</h2></div>
+    <div class="chips" role="group" aria-label="Filter apps by category"><button class="chip" id="f-all" data-f="all" aria-pressed="true">All <b>26</b></button><button class="chip" id="f-mob" data-f="mob" aria-pressed="false">Mobility <b>5</b></button><button class="chip" id="f-mkt" data-f="mkt" aria-pressed="false">Marketplaces <b>5</b></button><button class="chip" id="f-book" data-f="book" aria-pressed="false">Booking <b>4</b></button><button class="chip" id="f-com" data-f="com" aria-pressed="false">Commerce <b>4</b></button><button class="chip" id="f-care" data-f="care" aria-pressed="false">Health & Learning <b>4</b></button><button class="chip" id="f-media" data-f="media" aria-pressed="false">Media & Tools <b>4</b></button></div>
+  </div>
+  <div class="shelf" id="shelf">
+<article class="app cat-mkt lead" data-cat="mkt">
+<div class="apphead"><img class="icon" src="shots/shoglana/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Shoglana</h3><span class="meta"><span class="catlabel">Marketplaces</span><span class="when">02/2025 – Present</span></span></div></div>
+<p class="desc">Multi-service marketplace covering 900+ services, from home technicians and nurses to transport. One account works two ways: request a service nearby, or offer your own skill and earn. Providers go online or offline to control when they appear on the live map, and customers chat and agree with them directly.</p>
+<div class="shots" tabindex="0" aria-label="Shoglana screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/shoglana/01-home.webp" alt="Shoglana screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/shoglana/02-services.webp" alt="Shoglana screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/shoglana/03-map.webp" alt="Shoglana screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/shoglana/04-service-profile.webp" alt="Shoglana screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/shoglana/05-signup.webp" alt="Shoglana screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/shoglana/06-login.webp" alt="Shoglana screenshot 6" loading="lazy"></button></div>
+<ul class="feats"><li>Request or offer services</li><li>Live map of nearby providers</li><li>Online / offline visibility</li><li>Map, list &amp; category views</li><li>Instant chat</li><li>Ratings, distance &amp; favorites</li><li>Provider profile with ID upload</li><li>Invite codes &amp; guest mode</li><li>Arabic &amp; English</li></ul>
+<code class="pkg">com.shoglana</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.shoglana" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/%D8%B4%D8%BA%D9%84%D8%A7%D9%86%D8%A9/id6744296451" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-media lead" data-cat="media">
+<div class="apphead"><img class="icon" src="shots/saudi-wuf/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>SAUDI WUF</h3><span class="meta"><span class="catlabel">Media & Tools</span><span class="when">05/2026</span></span></div></div>
+<p class="desc">Official platform of the Saudi delegation at the World Urban Forum (WUF13) in Baku, Azerbaijan. Covers the Saudi Pavilion with news, the forum schedule, the delegation and an interactive exhibition map.</p>
+<div class="shots" tabindex="0" aria-label="SAUDI WUF screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/saudi-wuf/01-home.webp" alt="SAUDI WUF screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/saudi-wuf/02-delegation.webp" alt="SAUDI WUF screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/saudi-wuf/03-media-center.webp" alt="SAUDI WUF screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/saudi-wuf/04-schedule.webp" alt="SAUDI WUF screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/saudi-wuf/05-expo-map.webp" alt="SAUDI WUF screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/saudi-wuf/06-exhibitors.webp" alt="SAUDI WUF screenshot 6" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 7"><img src="shots/saudi-wuf/07-sessions.webp" alt="SAUDI WUF screenshot 7" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 8"><img src="shots/saudi-wuf/08-login.webp" alt="SAUDI WUF screenshot 8" loading="lazy"></button></div>
+<ul class="feats"><li>Media center</li><li>Forum schedule</li><li>Interactive expo map</li><li>Delegation &amp; exhibitors</li></ul>
+<code class="pkg">com.app.wuf13</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.app.wuf13" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/saudi-wuf/id6767007666" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-book lead" data-cat="book">
+<div class="apphead"><img class="icon" src="shots/air-balloon-booking/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Air Balloon Booking</h3><span class="sub">Traveler app</span><span class="meta"><span class="catlabel">Booking</span></span></div></div>
+<p class="desc">Traveler app for hot air balloon rides. Pick a sunrise, after-sunrise or private trip, set the date and passengers, then confirm from the offers providers send back. Air Drive adds ride-hailing with Hiace, limousine and delivery options.</p>
+<div class="shots" tabindex="0" aria-label="Air Balloon Booking screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/air-balloon-booking/01-home.webp" alt="Air Balloon Booking screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/air-balloon-booking/01b-waiting-offers.webp" alt="Air Balloon Booking screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/air-balloon-booking/02-your-guide.webp" alt="Air Balloon Booking screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/air-balloon-booking/03-air-drive.webp" alt="Air Balloon Booking screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/air-balloon-booking/04-choose-ride.webp" alt="Air Balloon Booking screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/air-balloon-booking/05-driver-offers.webp" alt="Air Balloon Booking screenshot 6" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 7"><img src="shots/air-balloon-booking/06-guide-reel.webp" alt="Air Balloon Booking screenshot 7" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 8"><img src="shots/air-balloon-booking/07-country-payment.webp" alt="Air Balloon Booking screenshot 8" loading="lazy"></button></div>
+<ul class="feats"><li>Balloon trip booking</li><li>Compare provider offers</li><li>Air Drive ride-hailing</li><li>Your Guide video reels</li><li>Balloon Stories</li><li>Country &amp; payment selection</li></ul>
+<code class="pkg">com.airballoon.app</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.airballoon.app" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/air-balloon-booking/id6751847479" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-book lead" data-cat="book">
+<div class="apphead"><img class="icon" src="shots/air-balloon-provider/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Air Balloon Provider</h3><span class="sub">Provider &amp; Driver app</span><span class="meta"><span class="catlabel">Booking</span></span></div></div>
+<p class="desc">One app for balloon providers and drivers. Providers receive trip requests, send a price proposal per basket and follow their accepted trips. Drivers go online on the map, take rides and submit their documents. Both get an in-app wallet.</p>
+<div class="shots" tabindex="0" aria-label="Air Balloon Provider screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/air-balloon-provider/01-onboarding.webp" alt="Air Balloon Provider screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/air-balloon-provider/02-join-as.webp" alt="Air Balloon Provider screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/air-balloon-provider/03-new-requests.webp" alt="Air Balloon Provider screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/air-balloon-provider/04-my-trips.webp" alt="Air Balloon Provider screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/air-balloon-provider/05-driver-online.webp" alt="Air Balloon Provider screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/air-balloon-provider/06-driver-trips.webp" alt="Air Balloon Provider screenshot 6" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 7"><img src="shots/air-balloon-provider/07-driver-documents.webp" alt="Air Balloon Provider screenshot 7" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 8"><img src="shots/air-balloon-provider/08-wallet.webp" alt="Air Balloon Provider screenshot 8" loading="lazy"></button></div>
+<ul class="feats"><li>Price proposals per basket</li><li>Driver mode with live map</li><li>Document verification</li><li>Wallet &amp; withdrawals</li><li>Trip history &amp; receipts</li></ul>
+<code class="pkg">com.airballoon.provider</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.airballoon.provider" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/air-balloon-provider/id6751884870" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-media lead" data-cat="media">
+<div class="apphead"><img class="icon" src="shots/alajlan-hr/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Alajlan HR</h3><span class="meta"><span class="catlabel">Media & Tools</span><span class="when">In store review</span></span></div></div>
+<p class="desc">Human resources app for Alajlan Riviera employees. Staff check in and out, follow their leave balance, and submit HR requests such as leave, salary letters, visas and clearance, then track each request through its approval steps. The app also holds the employee&#x27;s job, salary and document details, company news and tasks.</p>
+<button class="shot banner" aria-label="Enlarge image"><img src="shots/alajlan-hr/00-banner.webp" alt="Alajlan HR overview" loading="lazy"></button><div class="shots" tabindex="0" aria-label="Alajlan HR screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/alajlan-hr/01-home.webp" alt="Alajlan HR screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/alajlan-hr/02-hr-services.webp" alt="Alajlan HR screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/alajlan-hr/03-new-request.webp" alt="Alajlan HR screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/alajlan-hr/04-requests.webp" alt="Alajlan HR screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/alajlan-hr/05-employee-profile.webp" alt="Alajlan HR screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/alajlan-hr/06-login.webp" alt="Alajlan HR screenshot 6" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 7"><img src="shots/alajlan-hr/07-settings.webp" alt="Alajlan HR screenshot 7" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 8"><img src="shots/alajlan-hr/08-more.webp" alt="Alajlan HR screenshot 8" loading="lazy"></button></div>
+<ul class="feats"><li>Attendance check-in / out</li><li>Leave balance &amp; requests</li><li>HR request tracking</li><li>Employee profile &amp; documents</li><li>Company news &amp; tasks</li><li>Office 365 &amp; fingerprint login</li><li>Dark mode</li></ul>
+<code class="pkg">iOS · id6770320792 · Google Play pending</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://apps.apple.com/us/app/alajlan-hr/id6770320792" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-com lead" data-cat="com">
+<div class="apphead"><img class="icon" src="shots/cafe-cash/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Cafe Cash</h3><span class="sub">Waiter app</span><span class="meta"><span class="catlabel">Commerce</span></span></div></div>
+<p class="desc">Order and billing app for waiters in cafes. The hall view shows every table and its status at a glance. A waiter opens a table, adds items from the menu by category and edits the order until it is settled: paid in full, paid in part, or moved to a customer&#x27;s deferred account to collect later. Shifts, cancelled orders and every settlement are kept on record.</p>
+<button class="shot banner" aria-label="Enlarge image"><img src="shots/cafe-cash/00-banner.webp" alt="Cafe Cash overview" loading="lazy"></button><div class="shots" tabindex="0" aria-label="Cafe Cash screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/cafe-cash/01-hall.webp" alt="Cafe Cash screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/cafe-cash/02-order-menu.webp" alt="Cafe Cash screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/cafe-cash/03-settle.webp" alt="Cafe Cash screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/cafe-cash/04-drawer.webp" alt="Cafe Cash screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/cafe-cash/05-login.webp" alt="Cafe Cash screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/cafe-cash/06-signup.webp" alt="Cafe Cash screenshot 6" loading="lazy"></button></div>
+<ul class="feats"><li>Table hall with live status</li><li>Menu by category</li><li>Full, partial &amp; deferred payment</li><li>Deferred accounts</li><li>Shift closing &amp; history</li><li>Customer &amp; item management</li><li>Subscription-based</li></ul>
+<code class="pkg">Android</code>
+<div class="stores"></div>
+</article>
+<article class="app cat-care lead" data-cat="care">
+<div class="apphead"><img class="icon" src="shots/wezary/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Wezary</h3><span class="meta"><span class="catlabel">Health & Learning</span></span></div></div>
+<p class="desc">Educational app for school students in Iraq. Students browse courses by subject and grade, from chemistry and physics to math, Arabic and Islamic education, get to know each teacher through their profile, and unlock a course with a subscription code to follow its lessons. Announcements keep students up to date with new courses.</p>
+<div class="shots" tabindex="0" aria-label="Wezary screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/wezary/01-home.webp" alt="Wezary screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/wezary/02-courses.webp" alt="Wezary screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/wezary/03-teacher.webp" alt="Wezary screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/wezary/04-course-subscribe.webp" alt="Wezary screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/wezary/05-announcement.webp" alt="Wezary screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/wezary/06-onboarding.webp" alt="Wezary screenshot 6" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 7"><img src="shots/wezary/07-splash.webp" alt="Wezary screenshot 7" loading="lazy"></button></div>
+<ul class="feats"><li>Courses by subject &amp; grade</li><li>Teacher profiles</li><li>Course lessons</li><li>Subscription-code enrollment</li><li>Announcements</li><li>Latest courses feed</li></ul>
+<code class="pkg">com.wezary</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.wezary" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/wezary/id6502261901" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-media lead" data-cat="media">
+<div class="apphead"><img class="icon" src="shots/taknikat/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Taknikat</h3><span class="meta"><span class="catlabel">Media & Tools</span></span></div></div>
+<p class="desc">Social network for photographers and visual artists. Members publish posts, photo albums, videos, articles and blogs, and interact through likes, comments and shares in a shared feed. Beyond the feed they join photo competitions and events, offer photography services, buy and sell equipment, and collect points that upgrade their membership tier.</p>
+<div class="shots" tabindex="0" aria-label="Taknikat screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/taknikat/01-feed.webp" alt="Taknikat screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/taknikat/02-events.webp" alt="Taknikat screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/taknikat/03-event-details.webp" alt="Taknikat screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/taknikat/04-video.webp" alt="Taknikat screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/taknikat/05-membership.webp" alt="Taknikat screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/taknikat/06-share-work.webp" alt="Taknikat screenshot 6" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 7"><img src="shots/taknikat/07-products.webp" alt="Taknikat screenshot 7" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 8"><img src="shots/taknikat/08-categories.webp" alt="Taknikat screenshot 8" loading="lazy"></button></div>
+<ul class="feats"><li>Posts, albums &amp; videos</li><li>Likes, comments &amp; shares</li><li>Articles &amp; blogs</li><li>Photo events &amp; competitions</li><li>Services directory</li><li>Equipment marketplace</li><li>Points &amp; membership tiers</li><li>Notifications</li></ul>
+<code class="pkg">com.octopus.taknikat</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.octopus.taknikat" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/taknikat/id1585373891" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-book lead" data-cat="book">
+<div class="apphead"><img class="icon" src="shots/tourist-tour/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Tourist Tour</h3><span class="meta"><span class="catlabel">Booking</span></span></div></div>
+<p class="desc">Travel app for discovering and booking trips across Saudi Arabia. Travelers explore the country region by region on an interactive map, browse multi-day tour programs to destinations such as AlUla, Yanbu, Medina and Al-Qassim, and reserve hotels with exclusive deals and instant confirmation. Available in Arabic and English, with guest browsing before sign-up.</p>
+<div class="shots" tabindex="0" aria-label="Tourist Tour screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/tourist-tour/01-home-map.webp" alt="Tourist Tour screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/tourist-tour/02-destinations.webp" alt="Tourist Tour screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/tourist-tour/03-welcome.webp" alt="Tourist Tour screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/tourist-tour/04-more.webp" alt="Tourist Tour screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/tourist-tour/05-splash.webp" alt="Tourist Tour screenshot 5" loading="lazy"></button></div>
+<ul class="feats"><li>Interactive regions map</li><li>Tour program search</li><li>Multi-day destination trips</li><li>Hotel deals</li><li>Instant confirmation</li><li>Guest mode</li><li>Arabic &amp; English</li></ul>
+<code class="pkg">com.tourist.tour</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.tourist.tour" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/tourist-tour-app/id6478206741" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-mob lead" data-cat="mob">
+<div class="apphead"><img class="icon" src="shots/ito/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>ITO</h3><span class="sub">Rider app</span><span class="meta"><span class="catlabel">Mobility</span></span></div></div>
+<p class="desc">On-demand transport and delivery in one app. Request a car or motorcycle for a quick ride, send documents or groceries with a courier, or book a truck sized for furniture and large items. Fares are shown upfront and every trip is tracked live on the map.</p>
+<div class="shots" tabindex="0" aria-label="ITO screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/ito/01-home.webp" alt="ITO screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/ito/02-categories.webp" alt="ITO screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/ito/03-shipment.webp" alt="ITO screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/ito/04-notifications.webp" alt="ITO screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/ito/05-about.webp" alt="ITO screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/ito/06-settings.webp" alt="ITO screenshot 6" loading="lazy"></button></div>
+<ul class="feats"><li>Passenger rides</li><li>Document &amp; grocery delivery</li><li>Furniture moving trucks</li><li>Upfront pricing</li><li>Live trip tracking</li><li>Cash, e-payment &amp; wallet</li><li>Driver ratings</li><li>24/7 support</li></ul>
+<code class="pkg">com.iTO.app</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.iTO.app" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/ito/id6741041097" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-mob lead" data-cat="mob">
+<div class="apphead"><img class="icon" src="shots/ito-captain/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>ITO Captain</h3><span class="sub">Driver app</span><span class="meta"><span class="catlabel">Mobility</span></span></div></div>
+<p class="desc">Driver app for ITO captains. Captains choose the services they take, from passengers to documents, groceries and furniture, then receive requests in real time and follow each trip with live tracking. Orders, balance, vehicles and documents are all managed in the app. Built with Flutter, Firebase and Google Maps API.</p>
+<div class="shots" tabindex="0" aria-label="ITO Captain screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/ito-captain/01-splash.webp" alt="ITO Captain screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/ito-captain/02-profile.webp" alt="ITO Captain screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/ito-captain/03-orders.webp" alt="ITO Captain screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/ito-captain/04-services.webp" alt="ITO Captain screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/ito-captain/05-vehicles.webp" alt="ITO Captain screenshot 5" loading="lazy"></button></div>
+<ul class="feats"><li>Real-time service requests</li><li>Live GPS tracking</li><li>Service preferences</li><li>Orders &amp; earnings</li><li>Vehicle management</li><li>Document management</li><li>Multi-payment integration</li></ul>
+<code class="pkg">com.ito.driver</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.ito.driver" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/ito-driver/id6740854493" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-care lead" data-cat="care">
+<div class="apphead"><img class="icon" src="shots/fit-over-fat/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Fit Over Fat</h3><span class="meta"><span class="catlabel">Health & Learning</span></span></div></div>
+<p class="desc">Medical-based nutrition and fitness app for a diet clinic. Patients keep a daily diary of meals, water and sleep against their protein, carb and fat targets, and can log food by text, voice or photo with the built-in AI. Clinic sessions track body composition over time, alongside nutrition and workout plans tailored to each patient.</p>
+<div class="shots" tabindex="0" aria-label="Fit Over Fat screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/fit-over-fat/01-diary.webp" alt="Fit Over Fat screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/fit-over-fat/02-ai-food-log.webp" alt="Fit Over Fat screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/fit-over-fat/03-macros.webp" alt="Fit Over Fat screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/fit-over-fat/04-sessions.webp" alt="Fit Over Fat screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/fit-over-fat/05-body-composition.webp" alt="Fit Over Fat screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/fit-over-fat/06-splash.webp" alt="Fit Over Fat screenshot 6" loading="lazy"></button></div>
+<ul class="feats"><li>AI food logging (text, voice, image)</li><li>Macro &amp; calorie diary</li><li>Water &amp; sleep tracking</li><li>Clinic sessions</li><li>Body composition follow-up</li><li>Personalized plans</li></ul>
+<code class="pkg">com.fofclinic</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.fofclinic" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/fitoverfat/id1590233628" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-care lead" data-cat="care">
+<div class="apphead"><img class="icon" src="shots/smart-hub-for-parents/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Smart Hub for Parents</h3><span class="sub">Parent app</span><span class="meta"><span class="catlabel">Health & Learning</span></span></div></div>
+<p class="desc">Nursery app that keeps parents close to their child&#x27;s day. Attendance, meals, nap time and activities arrive as daily reports with the teacher&#x27;s comments, next to the class schedule, subjects and food menu. Parents with more than one child switch between them in a single account and can reach each teacher directly.</p>
+<div class="shots" tabindex="0" aria-label="Smart Hub for Parents screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/smart-hub-for-parents/01-home.webp" alt="Smart Hub for Parents screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/smart-hub-for-parents/02-daily-report.webp" alt="Smart Hub for Parents screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/smart-hub-for-parents/03-attendance.webp" alt="Smart Hub for Parents screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/smart-hub-for-parents/04-subjects.webp" alt="Smart Hub for Parents screenshot 4" loading="lazy"></button></div>
+<ul class="feats"><li>Daily child reports</li><li>Attendance calendar</li><li>Class schedule &amp; subjects</li><li>Food menu</li><li>Multiple children per account</li><li>Teacher contact</li></ul>
+<code class="pkg">com.multiurun.smarthub.parents</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.multiurun.smarthub.parents" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/smart-hub-for-parents/id6737814582" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-care lead" data-cat="care">
+<div class="apphead"><img class="icon" src="shots/smart-hub-for-teachers/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Smart Hub for Teachers</h3><span class="sub">Teacher app</span><span class="meta"><span class="catlabel">Health & Learning</span></span></div></div>
+<p class="desc">Nursery app for teachers and staff. A teacher starts the day with a swipe to check in, then works from the day&#x27;s schedule and classes: taking attendance, posting the food menu and class photo gallery, following children&#x27;s medication and chatting with parents. Staff also submit and track their own leave requests in the app.</p>
+<div class="shots" tabindex="0" aria-label="Smart Hub for Teachers screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/smart-hub-for-teachers/01-home.webp" alt="Smart Hub for Teachers screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/smart-hub-for-teachers/02-classes.webp" alt="Smart Hub for Teachers screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/smart-hub-for-teachers/03-food-menu.webp" alt="Smart Hub for Teachers screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/smart-hub-for-teachers/04-leave-requests.webp" alt="Smart Hub for Teachers screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/smart-hub-for-teachers/05-chat.webp" alt="Smart Hub for Teachers screenshot 5" loading="lazy"></button></div>
+<ul class="feats"><li>Swipe check-in</li><li>Classes &amp; daily schedule</li><li>Attendance</li><li>Food menu &amp; medication</li><li>Class gallery</li><li>Parent chat</li><li>Leave requests</li></ul>
+<code class="pkg">com.multiurun.smartHub.teachers</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.multiurun.smartHub.teachers" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/smart-hub-for-teachers/id6737814328" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-mkt lead" data-cat="mkt">
+<div class="apphead"><img class="icon" src="shots/shart/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Shart</h3><span class="meta"><span class="catlabel">Marketplaces</span></span></div></div>
+<p class="desc">Car care app for vehicle owners. Drivers shop for spare parts, tires and rims in an in-app store, and subscribe to a monthly maintenance plan that keeps their car serviced and its upkeep tracked. Vehicle inspection is offered as a service, and providers showcase their parts and receive orders through the app.</p>
+<div class="shots" tabindex="0" aria-label="Shart screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/shart/01-home.webp" alt="Shart screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/shart/02-spare-parts.webp" alt="Shart screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/shart/03-tire-services.webp" alt="Shart screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/shart/04-product.webp" alt="Shart screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/shart/05-cart.webp" alt="Shart screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/shart/06-services.webp" alt="Shart screenshot 6" loading="lazy"></button></div>
+<ul class="feats"><li>Spare parts store</li><li>Tires &amp; rims</li><li>Monthly maintenance subscription</li><li>Vehicle inspection</li><li>Cart &amp; checkout</li><li>Provider listings &amp; orders</li></ul>
+<code class="pkg">com.app.shart</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.app.shart" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/shart-app/id6476977824" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-mob lead" data-cat="mob">
+<div class="apphead"><img class="icon" src="shots/q-trip/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Q Trip</h3><span class="sub">Rider app</span><span class="meta"><span class="catlabel">Mobility</span></span></div></div>
+<p class="desc">On-demand rides by car or motorcycle. Riders set a destination, compare the fare and arrival time for each ride type before confirming, choose a man or lady driver, and follow the captain on the map until arrival. Trips end with a rating.</p>
+<div class="shots" tabindex="0" aria-label="Q Trip screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/q-trip/01-home.webp" alt="Q Trip screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/q-trip/02-ride.webp" alt="Q Trip screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/q-trip/03-driver-type.webp" alt="Q Trip screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/q-trip/04-tracking.webp" alt="Q Trip screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/q-trip/05-rating.webp" alt="Q Trip screenshot 5" loading="lazy"></button></div>
+<ul class="feats"><li>Car &amp; motorcycle rides</li><li>Upfront pricing</li><li>Man or lady driver</li><li>Real-time tracking</li><li>Cash &amp; promo codes</li><li>Trip rating</li></ul>
+<code class="pkg">com.QTrip</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.QTrip" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/q-trip-user/id6739780221" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-mob lead" data-cat="mob">
+<div class="apphead"><img class="icon" src="shots/q-trip-driver/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Q Trip Driver</h3><span class="sub">Driver app</span><span class="meta"><span class="catlabel">Mobility</span></span></div></div>
+<p class="desc">Driver app for Q Trip captains. Captains go online with one switch and watch their earnings from the map. Each request shows the fare, payment method and route, and the captain can accept it or offer a different fare. The app then guides the trip step by step: arrive at pickup, drop off, end the trip, collect and rate the rider.</p>
+<div class="shots" tabindex="0" aria-label="Q Trip Driver screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/q-trip-driver/01-splash.webp" alt="Q Trip Driver screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/q-trip-driver/02-online.webp" alt="Q Trip Driver screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/q-trip-driver/03-request.webp" alt="Q Trip Driver screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/q-trip-driver/04-pickup.webp" alt="Q Trip Driver screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/q-trip-driver/05-end-trip.webp" alt="Q Trip Driver screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/q-trip-driver/06-rating.webp" alt="Q Trip Driver screenshot 6" loading="lazy"></button></div>
+<ul class="feats"><li>Online / offline switch</li><li>Live earnings</li><li>Accept or counter-offer fares</li><li>Step-by-step trip flow</li><li>In-trip call &amp; chat</li><li>Rider rating</li><li>Arabic &amp; English</li></ul>
+<code class="pkg">com.Qtrip.driver</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.Qtrip.driver" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/q-trip-driver/id6740476962" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-book lead" data-cat="book">
+<div class="apphead"><img class="icon" src="shots/al-kaf-hajj/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Alkaff Haj</h3><span class="sub">Pilgrim app</span><span class="meta"><span class="catlabel">Booking</span></span></div></div>
+<p class="desc">Companion app for pilgrims travelling with a Hajj campaign. It links the campaign&#x27;s management with its pilgrims: each pilgrim carries a digital ID card with a QR code, follows the trip program day by day, checks meal times and menus, and receives announcements and alerts. An &quot;I&#x27;m lost&quot; guide leads them back to the camp in Mina, Arafat or Muzdalifah, alongside prayer times, a Qibla compass, the Quran and live streams from the Two Holy Mosques.</p>
+<div class="shots" tabindex="0" aria-label="Alkaff Haj screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/al-kaf-hajj/01-home.webp" alt="Alkaff Haj screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/al-kaf-hajj/02-lost-guide.webp" alt="Alkaff Haj screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/al-kaf-hajj/03-qibla.webp" alt="Alkaff Haj screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/al-kaf-hajj/04-mushaf.webp" alt="Alkaff Haj screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/al-kaf-hajj/05-meals.webp" alt="Alkaff Haj screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/al-kaf-hajj/06-journey-timeline.webp" alt="Alkaff Haj screenshot 6" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 7"><img src="shots/al-kaf-hajj/07-onboarding.webp" alt="Alkaff Haj screenshot 7" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 8"><img src="shots/al-kaf-hajj/08-terms.webp" alt="Alkaff Haj screenshot 8" loading="lazy"></button></div>
+<ul class="feats"><li>Digital pilgrim card with QR</li><li>Day-by-day trip program</li><li>Meal schedule &amp; menus</li><li>&quot;I&#x27;m lost&quot; camp guidance</li><li>Prayer times &amp; Qibla compass</li><li>Quran reader</li><li>Live Haram streams</li><li>Surveys &amp; requests</li></ul>
+<code class="pkg">com.elCaf.app</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.elCaf.app" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/alkaff-haj-%D8%A7%D9%84%D9%83%D8%A7%D9%81-%D9%84%D9%84%D8%AD%D8%AC/id6503917366" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-com lead" data-cat="com">
+<div class="apphead"><img class="icon" src="shots/al-khalaf-for-slaughterhouses/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Al-Khalaf for Slaughterhouses</h3><span class="meta"><span class="catlabel">Commerce</span></span></div></div>
+<p class="desc">Online store for a Saudi livestock supplier, the Abdullah Saleh Al-Khalaf Foundation. Customers browse sheep by breed and current offers, see the price and weight of each animal, choose how it is cut and packed, and order through a full cart and checkout with online payment.</p>
+<div class="shots" tabindex="0" aria-label="Al-Khalaf for Slaughterhouses screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/al-khalaf-for-slaughterhouses/00a-home.webp" alt="Al-Khalaf for Slaughterhouses screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/al-khalaf-for-slaughterhouses/00b-category.webp" alt="Al-Khalaf for Slaughterhouses screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/al-khalaf-for-slaughterhouses/00c-cart.webp" alt="Al-Khalaf for Slaughterhouses screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/al-khalaf-for-slaughterhouses/01-home.webp" alt="Al-Khalaf for Slaughterhouses screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/al-khalaf-for-slaughterhouses/02-offers.webp" alt="Al-Khalaf for Slaughterhouses screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/al-khalaf-for-slaughterhouses/03-product.webp" alt="Al-Khalaf for Slaughterhouses screenshot 6" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 7"><img src="shots/al-khalaf-for-slaughterhouses/04-account.webp" alt="Al-Khalaf for Slaughterhouses screenshot 7" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 8"><img src="shots/al-khalaf-for-slaughterhouses/05-login.webp" alt="Al-Khalaf for Slaughterhouses screenshot 8" loading="lazy"></button></div>
+<ul class="feats"><li>Breeds &amp; categories</li><li>Offers with prices</li><li>Weight details</li><li>Cutting &amp; packing options</li><li>Cart &amp; checkout</li><li>Online payments</li><li>WhatsApp &amp; call support</li></ul>
+<code class="pkg">com.matrixclouds.alkhalafsheep</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.matrixclouds.alkhalafsheep" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/%D8%A7%D9%84%D8%AE%D9%84%D9%81-%D9%84%D9%84%D8%B0%D8%A8%D8%A7%D8%A6%D8%AD/id1522309586" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-media lead" data-cat="media">
+<div class="apphead"><img class="icon" src="shots/al-bilbisi-for-metal-industries/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Al-Bilbisi for Metal Industries</h3><span class="meta"><span class="catlabel">Media & Tools</span></span></div></div>
+<p class="desc">Steel section reference for a metals trader. Browse profiles such as IPN, IPE, HE, UPN and SHS by standard, and read weight and dimensions for every size.</p>
+<div class="shots" tabindex="0" aria-label="Al-Bilbisi for Metal Industries screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/al-bilbisi-for-metal-industries/01-catalog.webp" alt="Al-Bilbisi for Metal Industries screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/al-bilbisi-for-metal-industries/02-section-table.webp" alt="Al-Bilbisi for Metal Industries screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/al-bilbisi-for-metal-industries/03-sizes.webp" alt="Al-Bilbisi for Metal Industries screenshot 3" loading="lazy"></button></div>
+<ul class="feats"><li>European, UK &amp; Japanese standards</li><li>Weight &amp; dimension tables</li><li>Call &amp; WhatsApp contact</li></ul>
+<code class="pkg">iOS · id6483363581</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://apps.apple.com/us/app/%D8%A7%D9%84%D8%A8%D9%84%D8%A8%D9%8A%D8%B3%D9%8A-%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D8%AF%D9%86/id6483363581" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-mkt lead" data-cat="mkt">
+<div class="apphead"><img class="icon" src="shots/done/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Done</h3><span class="meta"><span class="catlabel">Marketplaces</span></span></div></div>
+<p class="desc">Services app for maintenance and contracting in Saudi Arabia. Customers browse service categories, open a provider&#x27;s profile to see their services, ratings and photo gallery of past work, then book an appointment directly. Booking, communication and payment all happen in the app, in line with Saudi regulations.</p>
+<div class="shots" tabindex="0" aria-label="Done screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/done/00a-home.webp" alt="Done screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/done/00b-all-services.webp" alt="Done screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/done/00c-providers.webp" alt="Done screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/done/00d-provider-profile.webp" alt="Done screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/done/00e-booking.webp" alt="Done screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/done/01-home.webp" alt="Done screenshot 6" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 7"><img src="shots/done/02-onboarding.webp" alt="Done screenshot 7" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 8"><img src="shots/done/02b-provider-profile.webp" alt="Done screenshot 8" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 9"><img src="shots/done/03-splash.webp" alt="Done screenshot 9" loading="lazy"></button></div>
+<ul class="feats"><li>Service categories</li><li>Provider profiles</li><li>Ratings &amp; reviews</li><li>Work photo gallery</li><li>Appointment booking</li><li>In-app communication</li><li>In-app transactions</li></ul>
+<code class="pkg">com.done.app</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.done.app" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/done/id6449708170" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-com lead" data-cat="com">
+<div class="apphead"><div class="icon" aria-hidden="true">OG</div>
+<div class="appname"><h3>One Gapati</h3><span class="sub">Store &amp; Delivery apps</span><span class="meta"><span class="catlabel">Commerce</span></span></div></div>
+<p class="desc">Food delivery platform that connects customers, restaurants and couriers. Customers browse menus, pick a dish with its options and number of portions, and follow the order in real time. Couriers work from a live map, with a dashboard for accepted and rejected orders, earnings and working hours, and an order history by date.</p>
+<div class="shots" tabindex="0" aria-label="One Gapati screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/one-gapati/01-dish.webp" alt="One Gapati screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/one-gapati/02-courier-dashboard.webp" alt="One Gapati screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/one-gapati/03-courier-map.webp" alt="One Gapati screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/one-gapati/04-orders.webp" alt="One Gapati screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/one-gapati/05-profile.webp" alt="One Gapati screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/one-gapati/06-splash.webp" alt="One Gapati screenshot 6" loading="lazy"></button></div>
+<ul class="feats"><li>Menu browsing</li><li>Dish options &amp; portions</li><li>Real-time order tracking</li><li>Courier live map</li><li>Courier earnings dashboard</li><li>Order history by date</li><li>Flexible payments</li></ul>
+<code class="pkg">com.chapati.store · com.chapati.delivery</code>
+<div class="stores"><div class="storerow"><span class="who">Store</span><a class="store" href="https://play.google.com/store/apps/details?id=com.chapati.store" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a></div><div class="storerow"><span class="who">Delivery</span><a class="store" href="https://play.google.com/store/apps/details?id=com.chapati.delivery" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-mkt lead" data-cat="mkt">
+<div class="apphead"><img class="icon" src="shots/connect-user/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Connect User</h3><span class="sub">Customer super app</span><span class="meta"><span class="catlabel">Marketplaces</span></span></div></div>
+<p class="desc">Super app that puts four services behind one home screen: rides, restaurants, merchant stores and home services. Customers book a ride by choosing the car class and seeing the fare and arrival time first, order food and shop with a cart and checkout, and request contracting and maintenance providers. One wallet and one orders screen cover every service.</p>
+<div class="shots" tabindex="0" aria-label="Connect User screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/connect-user/01-home.webp" alt="Connect User screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/connect-user/02-ride-choose-car.webp" alt="Connect User screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/connect-user/03-cart.webp" alt="Connect User screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/connect-user/04-orders.webp" alt="Connect User screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/connect-user/05-welcome.webp" alt="Connect User screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/connect-user/06-onboarding.webp" alt="Connect User screenshot 6" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 7"><img src="shots/connect-user/07-more.webp" alt="Connect User screenshot 7" loading="lazy"></button></div>
+<ul class="feats"><li>Rides with car classes &amp; upfront fares</li><li>Restaurant ordering</li><li>Merchant shopping</li><li>Home &amp; company services</li><li>Cart &amp; checkout with discounts</li><li>Cash &amp; wallet payment</li><li>Orders across all services</li><li>Guest mode</li></ul>
+<code class="pkg">com.connect.user</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.connect.user" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/connect-user/id6751670510" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-mob lead" data-cat="mob">
+<div class="apphead"><img class="icon" src="shots/connect-driver/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Connect Driver</h3><span class="sub">Driver app</span><span class="meta"><span class="catlabel">Mobility</span></span></div></div>
+<p class="desc">Driver app for the Connect platform. Drivers sign up with guided steps, manage their vehicles and documents, and go on the road whenever they choose. They are notified of nearby trip requests, accept them and follow turn-by-turn directions, then review each trip&#x27;s fare, distance and route in their history. The app runs in English, Arabic, French and German.</p>
+<div class="shots" tabindex="0" aria-label="Connect Driver screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/connect-driver/01-request.webp" alt="Connect Driver screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/connect-driver/02-history.webp" alt="Connect Driver screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/connect-driver/03-trip-details.webp" alt="Connect Driver screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/connect-driver/04-settings.webp" alt="Connect Driver screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/connect-driver/05-language.webp" alt="Connect Driver screenshot 5" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 6"><img src="shots/connect-driver/06-notifications.webp" alt="Connect Driver screenshot 6" loading="lazy"></button></div>
+<ul class="feats"><li>Nearby trip requests</li><li>Turn-by-turn directions</li><li>Trip history &amp; details</li><li>Vehicle management</li><li>Document management</li><li>Reviews</li><li>4 languages</li><li>In-app support</li></ul>
+<code class="pkg">com.connect.appDriver</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.connect.appDriver" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/connect-driver/id6751670969" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-com lead" data-cat="com">
+<div class="apphead"><img class="icon" src="shots/connect-stores/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Connect Stores</h3><span class="sub">Merchant app</span><span class="meta"><span class="catlabel">Commerce</span></span></div></div>
+<p class="desc">Merchant app for restaurants and stores on Connect. Owners build their menu by category, set prices and discounts, and switch any item or the whole store on or off. Orders move through new, current, preparation and delivered, each with the customer&#x27;s address, phone, payment method and a printable summary. A profits screen totals earnings day by day, alongside opening times, delivery settings and offers.</p>
+<div class="shots" tabindex="0" aria-label="Connect Stores screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/connect-stores/01-menu.webp" alt="Connect Stores screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/connect-stores/02-orders.webp" alt="Connect Stores screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/connect-stores/03-order-details.webp" alt="Connect Stores screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/connect-stores/04-profits.webp" alt="Connect Stores screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/connect-stores/05-signup.webp" alt="Connect Stores screenshot 5" loading="lazy"></button></div>
+<ul class="feats"><li>Menu &amp; category management</li><li>Item availability toggle</li><li>Order pipeline by status</li><li>Order details &amp; printing</li><li>Daily profits</li><li>Opening times &amp; delivery</li><li>Offers &amp; discounts</li></ul>
+<code class="pkg">com.superApp.Partners</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.superApp.Partners" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/connect-stores/id6751670848" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="app cat-mkt lead" data-cat="mkt">
+<div class="apphead"><img class="icon" src="shots/connect-provider/icon.webp" alt="" loading="lazy">
+<div class="appname"><h3>Connect Provider</h3><span class="sub">Service provider app</span><span class="meta"><span class="catlabel">Marketplaces</span></span></div></div>
+<p class="desc">Provider app for Connect&#x27;s contracting and maintenance services. Individual technicians and companies register, pick the services they offer from a catalog that runs from electricity and paving to landscaping and relocation, and upload their ID and work licence to activate the account. Once online, they switch availability on, receive new orders and follow current ones, with a wallet, a public profile with gallery and ratings, and a full order history.</p>
+<div class="shots" tabindex="0" aria-label="Connect Provider screenshots"><button class="shot" aria-label="Enlarge screenshot 1"><img src="shots/connect-provider/01-home.webp" alt="Connect Provider screenshot 1" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 2"><img src="shots/connect-provider/02-profile.webp" alt="Connect Provider screenshot 2" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 3"><img src="shots/connect-provider/03-services.webp" alt="Connect Provider screenshot 3" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 4"><img src="shots/connect-provider/04-files.webp" alt="Connect Provider screenshot 4" loading="lazy"></button><button class="shot" aria-label="Enlarge screenshot 5"><img src="shots/connect-provider/05-more.webp" alt="Connect Provider screenshot 5" loading="lazy"></button></div>
+<ul class="feats"><li>Availability switch</li><li>New &amp; current orders</li><li>Service catalog selection</li><li>Document upload &amp; activation</li><li>Profile, gallery &amp; ratings</li><li>Wallet</li><li>Order history</li></ul>
+<code class="pkg">com.connect.provider2</code>
+<div class="stores"><div class="storerow"><a class="store" href="https://play.google.com/store/apps/details?id=com.connect.provider2" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a><a class="store" href="https://apps.apple.com/us/app/connect-provider/id6753764188" target="_blank" rel="noopener">App Store<span aria-hidden="true">↗</span></a></div></div>
+</article>
+  </div>
+</section>
+
+<section class="cols" id="about">
+  <div class="block">
+    <div><span class="eyebrow">Experience</span><h2>Where I've worked</h2></div>
+    <div class="job rv"><h3>Matrix Clouds</h3><span class="when">Flutter Developer · 11/2023 – Present · Cairo</span>
+      <ul><li>Developed and maintained 20+ production Flutter apps for Android and iOS.</li><li>Structured apps with Clean Architecture, BLoC and SOLID principles.</li><li>Integrated REST APIs, Firebase, Google Maps, push notifications and payment gateways.</li><li>Handled releases end to end on Google Play and the App Store.</li></ul></div>
+    <div class="job rv"><h3>RMS</h3><span class="when">Flutter Developer · 02/2022 – 10/2023 · Giza</span>
+      <ul><li>Delivered 4+ production Flutter apps across FinTech, E-Commerce and Healthcare.</li><li>Built reusable components and responsive UI to speed up feature work.</li><li>Integrated REST APIs, Firebase services and SQLite.</li></ul></div>
+  </div>
+  <div class="block rv">
+    <div><span class="eyebrow">Toolkit</span><h2>What I work with</h2></div>
+    <dl>
+      <div><dt>Mobile</dt><dd>Flutter, Dart, Android and iOS</dd></div>
+      <div><dt>Architecture</dt><dd>Clean Architecture, MVVM, SOLID</dd></div>
+      <div><dt>State</dt><dd>BLoC, Provider, GetX</dd></div>
+      <div><dt>APIs & data</dt><dd>REST, Dio, Firebase, SQLite, Hive</dd></div>
+      <div><dt>Integrations</dt><dd>Google Maps, push notifications, payment gateways</dd></div>
+      <div><dt>Backend</dt><dd>PHP, Laravel, Filament admin panels</dd></div>
+      <div><dt>Delivery</dt><dd>Git, GitHub, CI/CD, store releases</dd></div>
+      <div><dt>Education</dt><dd>B.Sc. in Computer Science, El Shorouk Academy, 2018 – 2022</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="cta rv" id="contact">
+  <h2>Have an app to build?</h2>
+  <p>I'm based in Nasr City, Cairo. Copy my email or number, or reach me on LinkedIn.</p>
+  <div class="contact">
+    <button class="pill copy" id="copy-email" data-copy="yehyaelzaeem7@gmail.com"><code>yehyaelzaeem7@gmail.com</code><small>Copy</small></button>
+    <button class="pill copy" id="copy-phone" data-copy="+201027362572"><code>+20 102 736 2572</code><small>Copy</small></button>
+    <a class="pill" href="https://www.linkedin.com/in/yehya-mohamed-1269b52a2/" target="_blank" rel="noopener">LinkedIn ↗</a>
+  </div>
+</section>
+</main>
+<div class="lb" id="lb" hidden><img id="lbimg" alt="Enlarged screenshot"></div>
+
+<footer><div class="gutter"><span>Yehya Elsayed · Flutter Developer · Cairo, Egypt</span><span>Built with care, shipped to the stores.</span></div></footer>
+
+<script>
+(function(){
+  var $=function(s){return [].slice.call(document.querySelectorAll(s))};
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var chips=$('.chip'),apps=$('.app');
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    var f=c.dataset.f,i=0;
+    chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')});
+    apps.forEach(function(a){var show=f==='all'||a.dataset.cat===f;a.hidden=!show;a.classList.remove('in','popin');
+      if(show){void a.offsetWidth;a.style.setProperty('animation-delay',(i++*40)+'ms');a.classList.add('popin')}});
+  })});
+  $('.copy').forEach(function(b){b.addEventListener('click',function(){
+    var s=b.querySelector('small'),done=function(t){s.textContent=t;setTimeout(function(){s.textContent='Copy'},1600)};
+    var sel=function(){var r=document.createRange();r.selectNodeContents(b.querySelector('code'));var g=getSelection();g.removeAllRanges();g.addRange(r);done('Selected')};
+    try{navigator.clipboard.writeText(b.dataset.copy).then(function(){done('Copied')},sel)}catch(e){sel()}
+  })});
+  apps.forEach(function(a){a.addEventListener('pointermove',function(e){var r=a.getBoundingClientRect();
+    a.style.setProperty('--mx',(e.clientX-r.left)+'px');a.style.setProperty('--my',(e.clientY-r.top)+'px')})});
+  var lb=document.getElementById('lb'),lbimg=document.getElementById('lbimg');
+  $('.shot').forEach(function(b){b.addEventListener('click',function(){lbimg.src=b.querySelector('img').src;lb.hidden=false})});
+  lb.addEventListener('click',function(){lb.hidden=true});addEventListener('keydown',function(e){if(e.key==='Escape')lb.hidden=true});
+  var bar=document.getElementById('bar'),tick=false;
+  addEventListener('scroll',function(){if(tick)return;tick=true;requestAnimationFrame(function(){
+    var d=document.documentElement,m=d.scrollHeight-innerHeight;bar.style.transform='scaleX('+(m>0?Math.min(1,scrollY/m):0)+')';tick=false})},{passive:true});
+  if(calm)return;
+  $('[data-count]').forEach(function(el){var n=+el.dataset.count,suf=el.dataset.suffix||'',t0=null,dur=1100;
+    function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/dur);el.textContent=Math.round(n*(1-Math.pow(1-p,3)))+suf;if(p<1)requestAnimationFrame(step)}
+    setTimeout(function(){requestAnimationFrame(step)},350)});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){var k=0;es.forEach(function(e){if(e.isIntersecting){e.target.style.setProperty('--d',(k++*70)+'ms');e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    apps.concat($('.rv')).forEach(function(el){if(el.getBoundingClientRect().top>innerHeight*.9)io.observe(el)});
+  }
+})();
+</script>
+
+</body>
+</html>
