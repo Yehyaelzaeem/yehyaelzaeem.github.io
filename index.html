@@ -138,7 +138,7 @@ img.icon{object-fit:cover;padding:0}
 .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:32px 48px}
 .block{display:flex;flex-direction:column;gap:16px;min-width:0}
 .job{display:flex;flex-direction:column;gap:6px;padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:var(--surface);border-left:5px solid var(--accent)}
-.job+.job{border-left-color:var(--accent2)}
+.job+.job{border-left-color:var(--accent2)}.job+.job+.job{border-left-color:var(--accent3)}.job+.job+.job+.job{border-left-color:var(--accent4)}
 .job h3{font-size:1.15rem}
 .job .when{font-family:var(--mono);font-size:.78rem}
 .job ul{margin:4px 0 0;padding-left:18px;color:var(--muted);font-size:.94rem;display:flex;flex-direction:column;gap:4px}
@@ -475,9 +475,13 @@ footer .gutter{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-be
   <div class="block">
     <div><span class="eyebrow">Experience</span><h2>Where I've worked</h2></div>
     <div class="job rv"><h3>Matrix Clouds</h3><span class="when">Flutter Developer · 11/2023 – Present · Cairo</span>
-      <ul><li>Developed and maintained 20+ production Flutter apps for Android and iOS.</li><li>Structured apps with Clean Architecture, BLoC and SOLID principles.</li><li>Integrated REST APIs, Firebase, Google Maps, push notifications and payment gateways.</li><li>Handled releases end to end on Google Play and the App Store.</li></ul></div>
+      <ul><li>Build and ship production Flutter apps for Android and iOS, from architecture to store release.</li></ul></div>
+    <div class="job rv"><h3>Fit Over Fat</h3><span class="when">Flutter Developer · Part-time · Present · Cairo</span>
+      <ul><li>Build and maintain the Fit Over Fat diet-clinic app for Android and iOS.</li></ul></div>
+    <div class="job rv"><h3>Smart</h3><span class="when">Flutter Developer · Part-time · Cairo</span>
+      <ul><li>Built Smart Hub (parent and teacher apps), Wezary, Alkaff Haj and other published Flutter apps.</li></ul></div>
     <div class="job rv"><h3>RMS</h3><span class="when">Flutter Developer · 02/2022 – 10/2023 · Giza</span>
-      <ul><li>Delivered 4+ production Flutter apps across FinTech, E-Commerce and Healthcare.</li><li>Built reusable components and responsive UI to speed up feature work.</li><li>Integrated REST APIs, Firebase services and SQLite.</li></ul></div>
+      <ul><li>Delivered 4+ production Flutter apps across FinTech, E-Commerce and Healthcare.</li></ul></div>
   </div>
   <div class="block rv">
     <div><span class="eyebrow">Toolkit</span><h2>What I work with</h2></div>
