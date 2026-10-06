@@ -55,6 +55,9 @@ h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
 .htext{display:flex;flex-direction:column;gap:22px;min-width:0}
 .live{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-family:var(--mono);font-size:.8rem;color:var(--live);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
 .live i{width:8px;height:8px;border-radius:50%;background:var(--live);display:block;box-shadow:0 0 0 0 var(--live)}
+.idrow{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.idrow .live{align-self:center}
+.me{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid var(--surface);box-shadow:0 0 0 3px var(--accent),0 14px 28px -12px var(--accent);flex:none}
 h1{font-size:clamp(2.7rem,7.4vw,5.6rem);line-height:.94;font-weight:800;letter-spacing:-.04em}
 h1 .grad{display:block;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3),var(--accent4),var(--accent));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
 .lede{font-size:clamp(1.05rem,2vw,1.25rem);max-width:56ch;color:var(--muted);margin:0}
@@ -203,7 +206,7 @@ footer .gutter{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-be
   <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
   <div class="gutter">
     <div class="htext">
-      <span class="live"><i></i>20+ apps live on Google Play and the App Store</span>
+      <div class="idrow"><img class="me" src="shots/me.webp" alt="Yehya Elsayed" width="84" height="84"><span class="live"><i></i>20+ apps live on Google Play and the App Store</span></div>
       <h1>Yehya Elsayed<span class="grad">Flutter Developer</span></h1>
       <p class="lede">I build and ship Android and iOS apps with Flutter. <b>5 years</b> of production work across mobility, marketplaces, booking, commerce, health and education, with real-time tracking, maps, chat and online payments.</p>
       <div class="facts">
@@ -476,9 +479,9 @@ footer .gutter{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-be
     <div><span class="eyebrow">Experience</span><h2>Where I've worked</h2></div>
     <div class="job rv"><h3>Matrix Clouds</h3><span class="when">Flutter Developer · 11/2023 – Present · Cairo</span>
       <ul><li>Build and ship production Flutter apps for Android and iOS, from architecture to store release.</li></ul></div>
-    <div class="job rv"><h3>Fit Over Fat</h3><span class="when">Flutter Developer · Part-time · Present · Cairo</span>
+    <div class="job rv"><h3>Viva Smart</h3><span class="when">Flutter Developer · Part-time · Present · Cairo</span>
       <ul><li>Build and maintain the Fit Over Fat diet-clinic app for Android and iOS.</li></ul></div>
-    <div class="job rv"><h3>Smart</h3><span class="when">Flutter Developer · Part-time · Cairo</span>
+    <div class="job rv"><h3>Multiurun</h3><span class="when">Flutter Developer · Part-time · Cairo</span>
       <ul><li>Built Smart Hub (parent and teacher apps), Wezary, Alkaff Haj and other published Flutter apps.</li></ul></div>
     <div class="job rv"><h3>RMS</h3><span class="when">Flutter Developer · 02/2022 – 10/2023 · Giza</span>
       <ul><li>Delivered 4+ production Flutter apps across FinTech, E-Commerce and Healthcare.</li></ul></div>
